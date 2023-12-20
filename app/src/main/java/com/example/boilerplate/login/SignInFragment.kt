@@ -1,5 +1,6 @@
 package com.example.boilerplate.login
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,6 +9,7 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.boilerplate.R
 import com.example.boilerplate.databinding.FragmentSigninBinding
+import com.example.boilerplate.main.dashboard.MainActivity
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
@@ -59,13 +61,16 @@ class SignInFragment : Fragment(), View.OnClickListener {
 
         // Proceeed to login
         // Call Login Manager to handle login
+        val intent = Intent(requireActivity(), MainActivity::class.java)
+        startActivity(intent)
+        requireActivity().finish()
     }
 
     /***
      * Navigate to registration screen
      */
     private fun navigateToRegister() {
-        findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
+        findNavController().navigate(R.id.action_SignInFragment_to_SignUpFragment)
     }
 
     /***

@@ -56,4 +56,12 @@
     <string name="female">Female</string>
     <string name="date_of_birth">Date of birth</string>
     <string name="click_to_select">Click to Select</string>
+    <string name="profile">Profile</string>
+    <string name="my_doctor">My Doctor</string>
+    <string name="calculate_bmi">Calculate BMi</string>
+    <string name="my_appointment">My Appointment</string>
+    <string name="add_medicine">Add Medicine</string>
+    <string name="weight">Weight</string>
+    <string name="height">Height</string>
+    <string name="dashboard">Dashboard</string>
 </resources>

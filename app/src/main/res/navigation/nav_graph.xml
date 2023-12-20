@@ -3,26 +3,34 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
+    app:startDestination="@id/signInFragment">
 
     <fragment
-        android:id="@+id/FirstFragment"
+        android:id="@+id/signInFragment"
         android:name="com.example.boilerplate.login.SignInFragment"
         android:label="@string/signin_fragment_label"
         tools:layout="@layout/fragment_signin">
 
         <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
+            android:id="@+id/action_SignInFragment_to_SignUpFragment"
+            app:destination="@id/signUpFragment" />
+        <action
+            android:id="@+id/action_SignInFragment_to_dashboardFragment"
+            app:destination="@id/dashboardFragment" />
     </fragment>
     <fragment
-        android:id="@+id/SecondFragment"
+        android:id="@+id/signUpFragment"
         android:name="com.example.boilerplate.login.SignUpFragment"
         android:label="@string/signup_fragment_label"
         tools:layout="@layout/fragment_signup">
 
         <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
+            android:id="@+id/action_SignUpFragment_to_SignInFragment"
+            app:destination="@id/signInFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/dashboardFragment"
+        android:name="com.example.boilerplate.main.dashboard.DashboardFragment"
+        android:label="@string/dashboard"
+        tools:layout="@layout/fragment_dashboard"/>
 </navigation>
