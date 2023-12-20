@@ -1,4 +1,4 @@
-package com.example.boilerplate.main.dashboard
+package com.example.boilerplate.main
 
 import android.os.Bundle
 import android.view.Menu
@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onSupportNavigateUp(): Boolean {
-        val navController = findNavController(R.id.nav_host_fragment_content_main)
+        val navController = findNavController(R.id.nav_host_fragment_content_dashboard_main)
         return navController.navigateUp(appBarConfiguration)
                 || super.onSupportNavigateUp()
     }

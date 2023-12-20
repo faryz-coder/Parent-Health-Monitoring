@@ -9,5 +9,14 @@
         android:id="@+id/dashboardFragment"
         android:name="com.example.boilerplate.main.dashboard.DashboardFragment"
         android:label="@string/dashboard"
-        tools:layout="@layout/fragment_dashboard"/>
+        tools:layout="@layout/fragment_dashboard" >
+        <action
+            android:id="@+id/action_dashboardFragment_to_medicineFragment2"
+            app:destination="@id/medicineFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/medicineFragment"
+        android:name="com.example.boilerplate.main.medicine.MedicineFragment"
+        android:label="@string/medicine"
+        tools:layout="@layout/fragment_medicine" />
 </navigation>

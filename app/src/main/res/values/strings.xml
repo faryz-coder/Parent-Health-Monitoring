@@ -64,4 +64,8 @@
     <string name="weight">Weight</string>
     <string name="height">Height</string>
     <string name="dashboard">Dashboard</string>
+    <string name="medicine_name">Medicine Name</string>
+    <string name="dose_amount">Dose amount</string>
+    <string name="reminders_condition">Reminders (condition)</string>
+    <string name="medicine">Medicine</string>
 </resources>

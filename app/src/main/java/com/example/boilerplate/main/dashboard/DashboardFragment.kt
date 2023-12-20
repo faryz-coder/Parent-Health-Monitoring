@@ -9,7 +9,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.boilerplate.R
 import com.example.boilerplate.databinding.FragmentDashboardBinding
 
-class DashboardFragment : Fragment() {
+class DashboardFragment : Fragment(), View.OnClickListener {
     private var _binding: FragmentDashboardBinding? = null
 
     private val binding get() = _binding!!
@@ -19,6 +19,15 @@ class DashboardFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentDashboardBinding.inflate(inflater, container, false)
+
+        binding.btnAddMedicine.setOnClickListener(this)
+
         return binding.root
+    }
+
+    override fun onClick(btn: View) {
+        when (btn.id) {
+            binding.btnAddMedicine.id -> findNavController().navigate(R.id.action_dashboardFragment_to_medicineFragment2)
+        }
     }
 }

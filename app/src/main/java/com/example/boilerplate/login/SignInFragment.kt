@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.boilerplate.R
 import com.example.boilerplate.databinding.FragmentSigninBinding
-import com.example.boilerplate.main.dashboard.MainActivity
+import com.example.boilerplate.main.MainActivity
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
