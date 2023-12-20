@@ -9,13 +9,16 @@
         android:id="@+id/dashboardFragment"
         android:name="com.example.boilerplate.main.dashboard.DashboardFragment"
         android:label="@string/dashboard"
-        tools:layout="@layout/fragment_dashboard" >
+        tools:layout="@layout/fragment_dashboard">
         <action
             android:id="@+id/action_dashboardFragment_to_medicineFragment2"
             app:destination="@id/medicineFragment" />
         <action
             android:id="@+id/action_dashboardFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_foodTrackerFragment"
+            app:destination="@id/foodTrackerFragment" />
     </fragment>
     <fragment
         android:id="@+id/medicineFragment"
@@ -24,7 +27,12 @@
         tools:layout="@layout/fragment_medicine" />
     <fragment
         android:id="@+id/profileFragment"
-        tools:layout="@layout/fragment_profile"
         android:name="com.example.boilerplate.main.profile.ProfileFragment"
-        android:label="@string/profile" />
+        android:label="@string/profile"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/foodTrackerFragment"
+        android:name="com.example.boilerplate.main.food_tracker.FoodTrackerFragment"
+        android:label="@string/food_tracker"
+        tools:layout="@layout/fragment_food_tracker" />
 </navigation>
