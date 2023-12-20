@@ -68,4 +68,6 @@
     <string name="dose_amount">Dose amount</string>
     <string name="reminders_condition">Reminders (condition)</string>
     <string name="medicine">Medicine</string>
+    <string name="address">Address</string>
+    <string name="about">About</string>
 </resources>

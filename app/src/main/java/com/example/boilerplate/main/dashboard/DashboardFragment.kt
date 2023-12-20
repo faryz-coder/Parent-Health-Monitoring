@@ -21,6 +21,7 @@ class DashboardFragment : Fragment(), View.OnClickListener {
         _binding = FragmentDashboardBinding.inflate(inflater, container, false)
 
         binding.btnAddMedicine.setOnClickListener(this)
+        binding.imageProfile.setOnClickListener(this)
 
         return binding.root
     }
@@ -28,6 +29,7 @@ class DashboardFragment : Fragment(), View.OnClickListener {
     override fun onClick(btn: View) {
         when (btn.id) {
             binding.btnAddMedicine.id -> findNavController().navigate(R.id.action_dashboardFragment_to_medicineFragment2)
+            binding.imageProfile.id -> findNavController().navigate(R.id.action_dashboardFragment_to_profileFragment)
         }
     }
 }

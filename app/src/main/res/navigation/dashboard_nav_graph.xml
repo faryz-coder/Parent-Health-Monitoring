@@ -13,10 +13,18 @@
         <action
             android:id="@+id/action_dashboardFragment_to_medicineFragment2"
             app:destination="@id/medicineFragment" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
     </fragment>
     <fragment
         android:id="@+id/medicineFragment"
         android:name="com.example.boilerplate.main.medicine.MedicineFragment"
         android:label="@string/medicine"
         tools:layout="@layout/fragment_medicine" />
+    <fragment
+        android:id="@+id/profileFragment"
+        tools:layout="@layout/fragment_profile"
+        android:name="com.example.boilerplate.main.profile.ProfileFragment"
+        android:label="@string/profile" />
 </navigation>
