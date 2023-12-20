@@ -59,7 +59,7 @@
     <string name="profile">Profile</string>
     <string name="food_tracker">Food Tracker</string>
     <string name="calculate_bmi">Calculate BMi</string>
-    <string name="my_appointment">My Appointment</string>
+    <string name="list_guardian">List Guardian</string>
     <string name="add_medicine">Add Medicine</string>
     <string name="weight">Weight</string>
     <string name="height">Height</string>
@@ -70,4 +70,7 @@
     <string name="medicine">Medicine</string>
     <string name="address">Address</string>
     <string name="about">About</string>
+    <string name="add_guardian">Add Guardian</string>
+    <string name="delete_guardian">Delete Guardian</string>
+    <string name="guardian">Guardian</string>
 </resources>

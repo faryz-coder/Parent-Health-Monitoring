@@ -168,7 +168,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="15dp"
                         android:layout_weight="1"
-                        android:text="70.1kg"
+                        android:text="160cm"
                         android:textSize="16sp" />
                 </LinearLayout>
             </LinearLayout>
@@ -250,7 +250,7 @@
 
 
         <com.google.android.material.card.MaterialCardView
-            android:id="@+id/materialCardView6"
+            android:id="@+id/calculateBmi"
             style="@style/Widget.Material3.CardView.Elevated"
             android:layout_width="150dp"
             android:layout_height="150dp"
@@ -275,7 +275,7 @@
         </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.card.MaterialCardView
-            android:id="@+id/materialCardView7"
+            android:id="@+id/listGuardian"
             style="@style/Widget.Material3.CardView.Elevated"
             android:layout_width="150dp"
             android:layout_height="150dp"
@@ -295,7 +295,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="@string/my_appointment" />
+                    android:text="@string/list_guardian" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 

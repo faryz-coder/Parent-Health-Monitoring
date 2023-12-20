@@ -19,6 +19,9 @@
         <action
             android:id="@+id/action_dashboardFragment_to_foodTrackerFragment"
             app:destination="@id/foodTrackerFragment" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_guardianFragment"
+            app:destination="@id/guardianFragment" />
     </fragment>
     <fragment
         android:id="@+id/medicineFragment"
@@ -35,4 +38,9 @@
         android:name="com.example.boilerplate.main.food_tracker.FoodTrackerFragment"
         android:label="@string/food_tracker"
         tools:layout="@layout/fragment_food_tracker" />
+    <fragment
+        android:id="@+id/guardianFragment"
+        tools:layout="@layout/fragment_guardian"
+        android:name="com.example.boilerplate.main.guardian.GuardianFragment"
+        android:label="@string/guardian" />
 </navigation>
