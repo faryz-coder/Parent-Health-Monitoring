@@ -22,6 +22,9 @@
         <action
             android:id="@+id/action_dashboardFragment_to_guardianFragment"
             app:destination="@id/guardianFragment" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_bmiCalculatorFragment"
+            app:destination="@id/bmiCalculatorFragment" />
     </fragment>
     <fragment
         android:id="@+id/medicineFragment"
@@ -43,4 +46,9 @@
         tools:layout="@layout/fragment_guardian"
         android:name="com.example.boilerplate.main.guardian.GuardianFragment"
         android:label="@string/guardian" />
+    <fragment
+        android:id="@+id/bmiCalculatorFragment"
+        tools:layout="@layout/fragment_bmi"
+        android:name="com.example.boilerplate.main.bmi.BmiCalculatorFragment"
+        android:label="@string/bmi_calculator" />
 </navigation>

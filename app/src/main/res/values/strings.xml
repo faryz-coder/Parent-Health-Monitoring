@@ -73,4 +73,5 @@
     <string name="add_guardian">Add Guardian</string>
     <string name="delete_guardian">Delete Guardian</string>
     <string name="guardian">Guardian</string>
+    <string name="bmi_calculator">Bmi Calculator</string>
 </resources>

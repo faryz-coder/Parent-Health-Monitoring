@@ -24,6 +24,7 @@ class DashboardFragment : Fragment(), View.OnClickListener {
         binding.imageProfile.setOnClickListener(this)
         binding.foodTracker.setOnClickListener(this)
         binding.listGuardian.setOnClickListener(this)
+        binding.calculateBmi.setOnClickListener(this)
 
         return binding.root
     }
@@ -34,6 +35,7 @@ class DashboardFragment : Fragment(), View.OnClickListener {
             binding.imageProfile.id -> findNavController().navigate(R.id.action_dashboardFragment_to_profileFragment)
             binding.foodTracker.id -> findNavController().navigate(R.id.action_dashboardFragment_to_foodTrackerFragment)
             binding.listGuardian.id -> findNavController().navigate(R.id.action_dashboardFragment_to_guardianFragment)
+            binding.calculateBmi.id -> findNavController().navigate(R.id.action_dashboardFragment_to_bmiCalculatorFragment)
         }
     }
 }
