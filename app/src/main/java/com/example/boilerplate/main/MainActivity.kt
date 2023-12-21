@@ -1,5 +1,6 @@
 package com.example.boilerplate.main
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -10,6 +11,7 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.boilerplate.R
 import com.example.boilerplate.databinding.DashboardActivityMainBinding
+import com.example.boilerplate.login.LoginActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -41,7 +43,12 @@ class MainActivity : AppCompatActivity() {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         return when (item.itemId) {
-            R.id.action_settings -> true
+            R.id.action_logout -> {
+                val intent = Intent(this, LoginActivity::class.java)
+                startActivity(intent)
+                finish()
+                return true
+            }
             else -> super.onOptionsItemSelected(item)
         }
     }
