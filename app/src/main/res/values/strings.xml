@@ -74,4 +74,8 @@
     <string name="delete_guardian">Delete Guardian</string>
     <string name="guardian">Guardian</string>
     <string name="bmi_calculator">Bmi Calculator</string>
+    <string name="calories_count">%1$d of 462 Cal</string>
+    <string name="totalCalories">%1$d of 1850</string>
+    <string name="name_of_food">Name of food</string>
+    <string name="no_of_calories">No of Calories</string>
 </resources>
