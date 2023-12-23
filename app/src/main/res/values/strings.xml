@@ -80,4 +80,13 @@
     <string name="no_of_calories">No of Calories</string>
     <string name="guardian_name">Guardian Name</string>
     <string name="relationship">Relationship</string>
+    <string name="input_kg">%1$s kg</string>
+    <string name="input_years">%1$s yrs</string>
+    <string name="input_cm">%1$s cm</string>
+    <string name="you_are_severely_underweight">You are Severely Underweight</string>
+    <string name="you_are_underweight">You are Underweight</string>
+    <string name="you_are_normal">You are Normal</string>
+    <string name="you_are_overweight">You are Overweight</string>
+    <string name="you_are_moderately_obese">You are Moderately Obese</string>
+    <string name="you_are_severely_obese">You are Severely Obese</string>
 </resources>
