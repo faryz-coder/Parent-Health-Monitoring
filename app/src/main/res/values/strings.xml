@@ -78,4 +78,6 @@
     <string name="totalCalories">%1$d of 1850</string>
     <string name="name_of_food">Name of food</string>
     <string name="no_of_calories">No of Calories</string>
+    <string name="guardian_name">Guardian Name</string>
+    <string name="relationship">Relationship</string>
 </resources>

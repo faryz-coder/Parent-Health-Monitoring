@@ -49,10 +49,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout11">
 
-        <LinearLayout
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/listGuardianRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"></LinearLayout>
+            android:padding="20dp" />
     </com.google.android.material.card.MaterialCardView>
 
     <LinearLayout
@@ -67,7 +68,7 @@
         app:layout_constraintTop_toBottomOf="@+id/materialCardView5">
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/addGuardian"
             style="@style/Widget.Material3.Button.ElevatedButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -75,7 +76,7 @@
             android:text="@string/add_guardian" />
 
         <Button
-            android:id="@+id/button4"
+            android:id="@+id/deleteGuardian"
             style="@style/Widget.Material3.Button.ElevatedButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -92,7 +92,7 @@ class FoodTrackerFragment : Fragment(), View.OnClickListener {
         bottomSheetDialog.setContentView(addFoodDialog.root)
 
         addFoodDialog.btnAddFood.setOnClickListener {
-            if (addFoodDialog.inputFoodName.isNotEmpty() && addFoodDialog.inputCalories.isNotEmpty()) {
+            if (addFoodDialog.inputFoodName.editText!!.text.isNotEmpty() && addFoodDialog.inputCalories.editText!!.text.isNotEmpty()) {
                 food.add(
                     Food(
                         addFoodDialog.inputFoodName.editText?.text.toString(),
