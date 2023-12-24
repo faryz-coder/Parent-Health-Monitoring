@@ -64,7 +64,7 @@ class BmiCalculatorFragment : Fragment(), View.OnClickListener {
     }
 
     private fun calculateBmi() {
-        val bmi = height / (sqrt(weight))
+        val bmi = (height/100) / (sqrt(weight))
 
         if (bmi < 16.0F) {
             binding.bmiStatus.text = getString(R.string.you_are_severely_underweight)
