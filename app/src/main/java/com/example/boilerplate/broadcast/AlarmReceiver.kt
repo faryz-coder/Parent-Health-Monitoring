@@ -16,7 +16,7 @@ class AlarmReceiver: BroadcastReceiver() {
         val message = intent?.getStringExtra("notification_message")
         if (notificationId != null && message != null) {
             // Build and show the notification using NotificationManager
-            Log.d("AlarmReceiver", "Faris")
+            Log.d("AlarmReceiver", "onReceive")
             var builder = NotificationCompat.Builder(context, "your_channel_id")
                 .setSmallIcon(R.drawable.rounded_ecg_heart_24)
                 .setContentTitle(context.getString(R.string.app_name))
