@@ -68,7 +68,9 @@ class ProfileFragment : Fragment(), View.OnClickListener, UtilsInterface {
         binding.inputWeight.editText?.setText(info?.weight)
 
         info?.userImage?.isNotEmpty()?.let {
-            Picasso.get().load(info.userImage).into(binding.profileImage)
+            if (it) {
+                Picasso.get().load(info.userImage).into(binding.profileImage)
+            }
         }
     }
 
@@ -118,7 +120,7 @@ class ProfileFragment : Fragment(), View.OnClickListener, UtilsInterface {
 
         return binding.inputFullName.editText?.text.toString() != info.fullName || binding.inputPhoneNumber.editText?.text.toString() != info.phoneNumber
                 || binding.inputAddress.editText?.text.toString() != info.address || binding.inputAbout.editText?.text.toString() != info.address
-                || binding.inputWeight.editText?.text.toString() != info.weight || binding.inputHeight.editText?.text.toString() != info.height
+                || binding.inputWeight.editText?.text.toString() != info.weight || binding.inputHeight.editText?.text.toString() != info.height || updateImg != null
     }
 
     override fun onClick(btn: View) {
