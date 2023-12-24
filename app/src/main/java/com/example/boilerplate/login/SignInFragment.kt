@@ -100,7 +100,11 @@ class SignInFragment : Fragment(), View.OnClickListener, UtilsInterface {
             SharedPreferencesManager(requireActivity()).cancelRememberMe()
         }
 
-        AuthManager().login(signInInfo(), ::onSuccess, ::onFailed)
+        if (binding.signinUsername.editText?.text.toString().isNotEmpty() && binding.signinPassword.editText?.text.toString().isNotEmpty()) {
+            AuthManager().login(signInInfo(), ::onSuccess, ::onFailed)
+
+        }
+
     }
 
     private fun signInInfo(): SignInInfo {

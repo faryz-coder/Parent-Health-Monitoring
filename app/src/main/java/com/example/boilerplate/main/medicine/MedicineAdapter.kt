@@ -33,15 +33,15 @@ class MedicineAdapter(private val listReminder: MutableList<Reminder>) :
         }
         holder.binding.rowDose.text = buildString {
             append("Dose: ")
-            append(item.medicineName)
+            append(item.doseAmount)
         }
         holder.binding.rowTime.text = buildString {
             append("Time: ")
-            append(item.medicineName)
+            append(item.time)
         }
         holder.binding.rowReminder.text = buildString {
             append("Reminder: ")
-            append(item.medicineName)
+            append(item.reminder)
         }
         holder.binding.rowRepeat.text = buildString {
             append("Repeat: ")

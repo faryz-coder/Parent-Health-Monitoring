@@ -51,7 +51,8 @@ class FirestoreManager {
             "phoneNumber" to userInfo.phoneNumber,
             "address" to userInfo.address,
             "about" to userInfo.about,
-
+            "weight" to userInfo.weight,
+            "height" to userInfo.height
             )
         if (userInfo.userImage.isNotEmpty()) {
             data["userImage"] = userInfo.userImage

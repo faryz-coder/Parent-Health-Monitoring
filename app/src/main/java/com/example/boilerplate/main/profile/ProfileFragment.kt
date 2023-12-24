@@ -28,15 +28,16 @@ class ProfileFragment : Fragment(), View.OnClickListener, UtilsInterface {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentProfileBinding.inflate(inflater, container,false)
+        _binding = FragmentProfileBinding.inflate(inflater, container, false)
         mainViewModel = ViewModelProvider(requireActivity())[MainViewModel::class.java]
 
-        val pickMedia = registerForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri ->
-            if (uri != null) {
-                binding.profileImage.setImageURI(uri)
-                updateImg = uri
+        val pickMedia =
+            registerForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri ->
+                if (uri != null) {
+                    binding.profileImage.setImageURI(uri)
+                    updateImg = uri
+                }
             }
-        }
 
         binding.btnSelectImage.setOnClickListener {
             pickMedia.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
@@ -63,6 +64,8 @@ class ProfileFragment : Fragment(), View.OnClickListener, UtilsInterface {
         binding.inputPhoneNumber.editText?.setText(info?.phoneNumber)
         binding.inputAddress.editText?.setText(info?.address)
         binding.inputAbout.editText?.setText(info?.about)
+        binding.inputHeight.editText?.setText(info?.height)
+        binding.inputWeight.editText?.setText(info?.weight)
 
         info?.userImage?.isNotEmpty()?.let {
             Picasso.get().load(info.userImage).into(binding.profileImage)
@@ -79,6 +82,8 @@ class ProfileFragment : Fragment(), View.OnClickListener, UtilsInterface {
         binding.inputPhoneNumber.isEnabled = binding.inputFullName.isEnabled
         binding.inputAddress.isEnabled = binding.inputFullName.isEnabled
         binding.inputAbout.isEnabled = binding.inputFullName.isEnabled
+        binding.inputWeight.isEnabled = binding.inputFullName.isEnabled
+        binding.inputHeight.isEnabled = binding.inputFullName.isEnabled
         binding.btnSelectImage.isEnabled = binding.inputFullName.isEnabled
     }
 
@@ -90,8 +95,16 @@ class ProfileFragment : Fragment(), View.OnClickListener, UtilsInterface {
                 phoneNumber = binding.inputPhoneNumber.editText?.text.toString(),
                 gender = "",
                 dateOfBirth = "",
-                height = "",
-                weight = "",
+                height = if (binding.inputHeight.editText?.text.toString().isEmpty()) {
+                    "0"
+                } else {
+                    binding.inputHeight.editText?.text.toString()
+                },
+                weight = if (binding.inputWeight.editText?.text.toString().isEmpty()) {
+                    "0"
+                } else {
+                    binding.inputWeight.editText?.text.toString()
+                },
                 userImage = "",
                 address = "",
                 about = "",
@@ -100,11 +113,12 @@ class ProfileFragment : Fragment(), View.OnClickListener, UtilsInterface {
         }
     }
 
-    private fun validate() : Boolean {
+    private fun validate(): Boolean {
         val info = mainViewModel.userInfo.value!!
 
         return binding.inputFullName.editText?.text.toString() != info.fullName || binding.inputPhoneNumber.editText?.text.toString() != info.phoneNumber
                 || binding.inputAddress.editText?.text.toString() != info.address || binding.inputAbout.editText?.text.toString() != info.address
+                || binding.inputWeight.editText?.text.toString() != info.weight || binding.inputHeight.editText?.text.toString() != info.height
     }
 
     override fun onClick(btn: View) {
