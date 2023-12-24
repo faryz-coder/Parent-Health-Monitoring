@@ -25,4 +25,8 @@ class MainViewModel: ViewModel() {
         userInfo.value = info
     }
 
+    fun refresh() {
+        FirestoreManager().getUserInfo(AuthManager().userEmail(), ::setUserInfo)
+    }
+
 }

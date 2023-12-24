@@ -42,6 +42,10 @@ class DashboardFragment : Fragment(), View.OnClickListener {
         return binding.root
     }
 
+    override fun onResume() {
+        super.onResume()
+    }
+
     override fun onClick(btn: View) {
         when (btn.id) {
             binding.btnAddMedicine.id -> findNavController().navigate(R.id.action_dashboardFragment_to_medicineFragment2)

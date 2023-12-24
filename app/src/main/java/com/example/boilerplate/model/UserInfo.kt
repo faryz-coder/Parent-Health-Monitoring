@@ -1,12 +1,14 @@
 package com.example.boilerplate.model
 
 data class UserInfo(
-    val fullName: String,
-    val email: String,
-    val phoneNumber: String,
-    val gender: String,
-    val dateOfBirth: String,
-    val height: String,
-    val weight: String,
-    val userImage: String
+    var fullName: String,
+    var email: String,
+    var phoneNumber: String,
+    var gender: String,
+    var dateOfBirth: String,
+    var height: String,
+    var weight: String,
+    var userImage: String,
+    var address: String,
+    var about: String
 )
