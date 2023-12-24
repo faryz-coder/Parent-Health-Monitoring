@@ -16,17 +16,19 @@ import android.widget.Toast
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.example.boilerplate.R
 import com.example.boilerplate.broadcast.AlarmReceiver
 import com.example.boilerplate.databinding.FragmentMedicineBinding
 import com.example.boilerplate.main.medicine.model.Reminder
 import com.example.boilerplate.manager.SharedPreferencesManager
+import com.example.boilerplate.utils.UtilsInterface
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat
 import java.text.SimpleDateFormat
 import java.util.Locale
 
-class MedicineFragment : Fragment(), View.OnClickListener {
+class MedicineFragment : Fragment(), View.OnClickListener, UtilsInterface {
     private var _binding: FragmentMedicineBinding? = null
 
     private val binding get() = _binding!!
@@ -41,6 +43,7 @@ class MedicineFragment : Fragment(), View.OnClickListener {
 
         binding.submitReminder.setOnClickListener(this)
         binding.btnSelectTime.setOnClickListener(this)
+        binding.medicineLayout.setOnClickListener(this)
 
         return binding.root
     }
@@ -49,6 +52,7 @@ class MedicineFragment : Fragment(), View.OnClickListener {
         when (btn.id) {
             binding.btnSelectTime.id -> selectTime().show(childFragmentManager, "Select Time")
             binding.submitReminder.id -> initiateReminder()
+            binding.medicineLayout.id -> hideKeyboard(requireActivity(), requireView().findFocus())
         }
     }
 
@@ -72,7 +76,7 @@ class MedicineFragment : Fragment(), View.OnClickListener {
 
             Log.d("MedicineFragment", "total : ${total.size}")
             createReminder(reminder)
-
+            findNavController().popBackStack()
 //
         }
     }

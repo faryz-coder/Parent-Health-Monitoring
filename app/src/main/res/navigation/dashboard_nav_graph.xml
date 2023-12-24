@@ -25,6 +25,9 @@
         <action
             android:id="@+id/action_dashboardFragment_to_bmiCalculatorFragment"
             app:destination="@id/bmiCalculatorFragment" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_listMedicineFragment"
+            app:destination="@id/listMedicineFragment" />
     </fragment>
     <fragment
         android:id="@+id/medicineFragment"
@@ -51,4 +54,9 @@
         tools:layout="@layout/fragment_bmi"
         android:name="com.example.boilerplate.main.bmi.BmiCalculatorFragment"
         android:label="@string/bmi_calculator" />
+    <fragment
+        android:id="@+id/listMedicineFragment"
+        android:name="com.example.boilerplate.main.medicine.ListMedicineFragment"
+        tools:layout="@layout/fragment_list_medicine"
+        android:label="Medicine" />
 </navigation>

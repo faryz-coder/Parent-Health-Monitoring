@@ -48,7 +48,7 @@ class DashboardFragment : Fragment(), View.OnClickListener {
 
     override fun onClick(btn: View) {
         when (btn.id) {
-            binding.btnAddMedicine.id -> findNavController().navigate(R.id.action_dashboardFragment_to_medicineFragment2)
+            binding.btnAddMedicine.id -> findNavController().navigate(R.id.action_dashboardFragment_to_listMedicineFragment)
             binding.imageProfile.id -> findNavController().navigate(R.id.action_dashboardFragment_to_profileFragment)
             binding.foodTracker.id -> findNavController().navigate(R.id.action_dashboardFragment_to_foodTrackerFragment)
             binding.listGuardian.id -> findNavController().navigate(R.id.action_dashboardFragment_to_guardianFragment)
