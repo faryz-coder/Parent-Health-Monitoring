@@ -91,4 +91,5 @@
     <string name="you_are_moderately_obese">You are Moderately Obese</string>
     <string name="you_are_severely_obese">You are Severely Obese</string>
     <string name="hi_user">Hi %1$s!</string>
+    <string name="reminder">reminder</string>
 </resources>

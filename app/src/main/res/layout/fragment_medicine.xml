@@ -65,13 +65,6 @@
                 android:inputType="text" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <TextView
-            android:id="@+id/textView15"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="+ ADD SCHEDULE/REMINDER"
-            android:textSize="20sp" />
     </LinearLayout>
 
     <LinearLayout
@@ -79,7 +72,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintBottom_toTopOf="@+id/submitReminder"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -92,32 +85,11 @@
             android:textSize="18sp" />
 
         <Button
+            android:id="@+id/btnSelectTime"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:text="Click to Select Time" />
-
-        <TextView
-            android:id="@+id/textView17"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="Frequently"
-            android:textSize="18sp" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.Material3.TextInputLayout.FilledBox.ExposedDropdownMenu"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <AutoCompleteTextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:inputType="none"
-                app:simpleItems="@array/frequent" />
-
-        </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
             android:id="@+id/textView18"
@@ -133,14 +105,14 @@
             android:orientation="horizontal">
 
             <RadioButton
-                android:id="@+id/radioButton"
+                android:id="@+id/radioYes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Yes"
                 android:textSize="18sp" />
 
             <RadioButton
-                android:id="@+id/radioButton2"
+                android:id="@+id/radioNo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="No"
@@ -148,6 +120,7 @@
         </RadioGroup>
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputReminders"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/reminders_condition">
@@ -163,7 +136,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/submitReminder"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Submit"
