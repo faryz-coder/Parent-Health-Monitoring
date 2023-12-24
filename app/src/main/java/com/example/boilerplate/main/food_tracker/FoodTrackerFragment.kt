@@ -4,18 +4,19 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import androidx.core.view.isNotEmpty
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.boilerplate.R
 import com.example.boilerplate.databinding.FormAddFoodBinding
 import com.example.boilerplate.databinding.FragmentFoodTrackerBinding
 import com.example.boilerplate.main.food_tracker.model.Food
+import com.example.boilerplate.manager.FirestoreManager
 import com.google.android.material.bottomsheet.BottomSheetDialog
 
 class FoodTrackerFragment : Fragment(), View.OnClickListener {
     private var _binding: FragmentFoodTrackerBinding? = null
+    private lateinit var viewModel: FoodViewModel
 
     private val binding get() = _binding!!
     private val food = mutableListOf<Food>()
@@ -29,6 +30,7 @@ class FoodTrackerFragment : Fragment(), View.OnClickListener {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentFoodTrackerBinding.inflate(inflater, container, false)
+        viewModel = ViewModelProvider(this)[FoodViewModel::class.java]
 
         food.add(Food("Nasi Lemak", 20, "breakfast"))
         food.add(Food("lunch", 20, "lunch"))
@@ -52,6 +54,16 @@ class FoodTrackerFragment : Fragment(), View.OnClickListener {
             adapter = dinnerAdapter
         }
 
+        viewModel.food.observe(viewLifecycleOwner) {
+            food.clear()
+            food.addAll(it)
+
+            breakFastAdapter.notifyDataSetChanged()
+            lunchAdapter.notifyDataSetChanged()
+            dinnerAdapter.notifyDataSetChanged()
+            updateCaloriesCount()
+        }
+
         updateCaloriesCount()
 
         return binding.root
@@ -66,9 +78,9 @@ class FoodTrackerFragment : Fragment(), View.OnClickListener {
     }
 
     private fun updateCaloriesCount() {
-        var totalBreakfast = 0
-        var totalLunch = 0
-        var totalDinner = 0
+        var totalBreakfast = 0L
+        var totalLunch = 0L
+        var totalDinner = 0L
 
         food.map {
             when (it.type) {
@@ -96,10 +108,11 @@ class FoodTrackerFragment : Fragment(), View.OnClickListener {
                 food.add(
                     Food(
                         addFoodDialog.inputFoodName.editText?.text.toString(),
-                        addFoodDialog.inputCalories.editText?.text.toString().toInt(),
+                        addFoodDialog.inputCalories.editText?.text.toString().toLong(),
                         type
                     )
                 )
+                FirestoreManager().addFood(food.last())
 
                 when (type) {
                     "breakfast" -> {

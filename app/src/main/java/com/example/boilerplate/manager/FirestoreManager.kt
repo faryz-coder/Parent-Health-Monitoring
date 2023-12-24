@@ -1,6 +1,7 @@
 package com.example.boilerplate.manager
 
 import android.net.Uri
+import com.example.boilerplate.main.food_tracker.model.Food
 import com.example.boilerplate.main.guardian.model.Guardian
 import com.example.boilerplate.model.UserInfo
 import com.google.firebase.firestore.SetOptions
@@ -100,5 +101,37 @@ class FirestoreManager {
             .collection("guardian").document(id)
             .delete()
             .addOnSuccessListener { onSuccess.invoke() }
+    }
+
+    fun getListFood(onSuccess: (MutableList<Food>) -> Unit) {
+        val docRef = db.collection("user").document(AuthManager().userEmail())
+            .collection("food")
+
+        docRef.get()
+            .addOnSuccessListener { document ->
+                val food = mutableListOf<Food>()
+
+                document.map {
+                    food.add(
+                        Food(
+                            it.getField<String>("name") ?: "",
+                            it.getField<Long>("calories") ?: 0L,
+                            it.getField<String>("type") ?: "",
+                        )
+                    )
+                    onSuccess.invoke(food)
+                }
+            }
+    }
+
+    fun addFood(food: Food) {
+        val data = hashMapOf(
+            "name" to food.name,
+            "calories" to food.calories,
+            "type" to food.type
+        )
+        val docRef = db.collection("user").document(AuthManager().userEmail())
+            .collection("food")
+            .add(data)
     }
 }
