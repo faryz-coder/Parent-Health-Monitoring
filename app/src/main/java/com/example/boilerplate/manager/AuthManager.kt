@@ -1,6 +1,7 @@
 package com.example.boilerplate.manager
 
 import android.util.Log
+import com.example.boilerplate.login.model.SignInInfo
 import com.example.boilerplate.login.model.SignUpInfo
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -19,6 +20,21 @@ class AuthManager {
     fun isUserSignIn(): Boolean {
         val currentUser = auth.currentUser
         return currentUser != null
+    }
+
+    fun signOut() {
+        auth.signOut()
+    }
+
+    fun login(signInInfo: SignInInfo, onSuccess: () -> Unit, onFailed: () -> Unit) {
+        auth.signInWithEmailAndPassword(signInInfo.email, signInInfo.password)
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    onSuccess.invoke()
+                } else {
+                    onFailed.invoke()
+                }
+            }
     }
 
     fun createUser(signUpInfo: SignUpInfo, onSuccess: () -> Unit, onFailed: () -> Unit) {

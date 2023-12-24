@@ -12,6 +12,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.boilerplate.R
 import com.example.boilerplate.databinding.DashboardActivityMainBinding
 import com.example.boilerplate.login.LoginActivity
+import com.example.boilerplate.manager.AuthManager
 
 class MainActivity : AppCompatActivity() {
 
@@ -44,6 +45,8 @@ class MainActivity : AppCompatActivity() {
         // as you specify a parent activity in AndroidManifest.xml.
         return when (item.itemId) {
             R.id.action_logout -> {
+                AuthManager().signOut()
+
                 val intent = Intent(this, LoginActivity::class.java)
                 startActivity(intent)
                 finish()

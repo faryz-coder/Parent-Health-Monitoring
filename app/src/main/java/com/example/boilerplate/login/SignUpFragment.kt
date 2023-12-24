@@ -17,6 +17,7 @@ import com.example.boilerplate.databinding.FragmentSignupBinding
 import com.example.boilerplate.login.model.SignUpInfo
 import com.example.boilerplate.main.MainActivity
 import com.example.boilerplate.manager.AuthManager
+import com.example.boilerplate.utils.UtilsInterface
 import com.google.android.material.datepicker.MaterialDatePicker
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -29,7 +30,7 @@ import kotlin.time.Duration.Companion.days
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
  */
-class SignUpFragment : Fragment() {
+class SignUpFragment : Fragment(), UtilsInterface, View.OnClickListener {
 
     private var _binding: FragmentSignupBinding? = null
 
@@ -58,6 +59,8 @@ class SignUpFragment : Fragment() {
 //        binding.buttonSecond.setOnClickListener {
 //            findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
 //        }
+
+        binding.signUpLayout.setOnClickListener(this)
 
         binding.btnSelectDate.setOnClickListener {
             datePicker.show(requireActivity().supportFragmentManager, "dateOfBirth")
@@ -178,5 +181,11 @@ class SignUpFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    override fun onClick(btn: View) {
+        when (btn.id) {
+            binding.signUpLayout.id -> hideKeyboard(requireActivity(), requireView().findFocus())
+        }
     }
 }

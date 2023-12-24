@@ -6,6 +6,7 @@
     <string name="signup_fragment_label">SignUp Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
+    <string name="rememberMe">remember_me</string>
 
     <string name="lorem_ipsum">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris
