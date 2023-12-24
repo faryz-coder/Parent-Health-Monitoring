@@ -22,6 +22,10 @@ class AuthManager {
         return currentUser != null
     }
 
+    fun userEmail(): String {
+        return auth.currentUser!!.email.toString()
+    }
+
     fun signOut() {
         auth.signOut()
     }
