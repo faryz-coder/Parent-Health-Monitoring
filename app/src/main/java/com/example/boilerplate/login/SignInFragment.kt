@@ -68,7 +68,7 @@ class SignInFragment : Fragment(), View.OnClickListener, UtilsInterface {
         super.onResume()
         AuthManager().isUserSignIn().let {
             if (it) {
-//                navigateToMain()
+                navigateToMain()
             } else {
                 val rememberMe = SharedPreferencesManager(requireActivity()).getRememberMe().let { me ->
                     if (me.isNotEmpty()) {
