@@ -10,9 +10,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.boilerplate.databinding.DialogAddGuardianBinding
 import com.example.boilerplate.databinding.FragmentGuardianBinding
 import com.example.boilerplate.main.guardian.model.Guardian
+import com.example.boilerplate.manager.FirestoreManager
+import com.example.boilerplate.utils.UtilsInterface
 import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.google.android.material.snackbar.Snackbar
 
-class GuardianFragment : Fragment(), View.OnClickListener {
+class GuardianFragment : Fragment(), View.OnClickListener, UtilsInterface {
     private var _binding: FragmentGuardianBinding? = null
     private lateinit var viewModel: GuardianViewModel
 
@@ -29,12 +32,16 @@ class GuardianFragment : Fragment(), View.OnClickListener {
         _binding = FragmentGuardianBinding.inflate(inflater, container, false)
         viewModel = ViewModelProvider(this)[GuardianViewModel::class.java]
 
-        guardian.add(Guardian("Ichigo", "Fan"))
-
         binding.listGuardianRecyclerView.apply {
             guardianAdapter = GuardianAdapter(guardian, viewModel, ::deleteItem)
             layoutManager = LinearLayoutManager(requireContext())
             adapter = guardianAdapter
+        }
+
+        viewModel.listGuardian.observe(viewLifecycleOwner) {
+            guardian.clear()
+            guardian.addAll(it)
+            guardianAdapter.notifyDataSetChanged()
         }
 
         return binding.root
@@ -44,7 +51,11 @@ class GuardianFragment : Fragment(), View.OnClickListener {
         super.onViewCreated(view, savedInstanceState)
 
         binding.addGuardian.setOnClickListener {
-            dialogAddGuardian().show()
+            if (guardian.size < 5) {
+                dialogAddGuardian().show()
+            } else {
+                Snackbar.make(requireView(), "Guard already MAX", Snackbar.LENGTH_SHORT).show()
+            }
         }
         binding.deleteGuardian.setOnClickListener(this)
     }
@@ -60,12 +71,15 @@ class GuardianFragment : Fragment(), View.OnClickListener {
                 guardian.add(
                     Guardian(
                         addGuardianDialog.inputGuardianName.editText!!.text.toString(),
-                        addGuardianDialog.inputGuardianRelation.editText!!.text.toString()
+                        addGuardianDialog.inputGuardianRelation.editText!!.text.toString(),
+                        ""
                     )
                 ).let {
                     guardianAdapter.notifyItemInserted(guardian.size)
+                    FirestoreManager().addGuardian(guardian.last(), {viewModel.refresh()})
                 }
             }
+            bottomSheetDialog.dismiss()
         }
         return bottomSheetDialog
     }
@@ -74,8 +88,10 @@ class GuardianFragment : Fragment(), View.OnClickListener {
      * Delete guardian
      */
     private fun deleteItem(index: Int) {
-        guardian.removeAt(index)
-        guardianAdapter.notifyItemRemoved(index)
+        FirestoreManager().removeGuardian(guardian[index].id, {viewModel.refresh()}).let {
+            guardian.removeAt(index)
+            guardianAdapter.notifyItemRemoved(index)
+        }
     }
 
     override fun onClick(btn: View) {

@@ -39,6 +39,7 @@
             android:layout_width="40dp"
             android:layout_height="15dp"
             android:src="@drawable/rounded_delete_forever_24"
+            android:tint="@color/design_default_color_error"
             android:visibility="invisible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/guardianRelation"
