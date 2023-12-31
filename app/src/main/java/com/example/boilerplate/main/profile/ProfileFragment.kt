@@ -108,8 +108,8 @@ class ProfileFragment : Fragment(), View.OnClickListener, UtilsInterface {
                     binding.inputWeight.editText?.text.toString()
                 },
                 userImage = "",
-                address = "",
-                about = "",
+                address = binding.inputAddress.editText?.text.toString(),
+                about = binding.inputAbout.editText?.text.toString(),
             )
             FirestoreManager().updateUserInfo(updateImg, updatedInfo) { mainViewModel.refresh() }
         }
