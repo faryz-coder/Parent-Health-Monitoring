@@ -115,6 +115,7 @@ class FirestoreManager {
                 document.map {
                     food.add(
                         Food(
+                            it.id,
                             it.getField<String>("name") ?: "",
                             it.getField<Long>("calories") ?: 0L,
                             it.getField<String>("type") ?: "",
@@ -123,6 +124,12 @@ class FirestoreManager {
                     onSuccess.invoke(food)
                 }
             }
+    }
+
+    fun removeFood(id: String) {
+        db.collection("user").document(AuthManager().userEmail())
+            .collection("food").document(id)
+            .delete()
     }
 
     fun addFood(food: Food) {

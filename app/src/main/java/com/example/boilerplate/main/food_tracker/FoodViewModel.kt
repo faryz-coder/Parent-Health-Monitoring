@@ -19,4 +19,8 @@ class FoodViewModel : ViewModel() {
         _food.value = food
     }
 
+    fun removeFood(id: String) {
+        FirestoreManager().removeFood(id)
+    }
+
 }

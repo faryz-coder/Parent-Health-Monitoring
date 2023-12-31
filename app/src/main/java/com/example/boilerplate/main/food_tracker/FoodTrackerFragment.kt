@@ -32,24 +32,24 @@ class FoodTrackerFragment : Fragment(), View.OnClickListener {
         _binding = FragmentFoodTrackerBinding.inflate(inflater, container, false)
         viewModel = ViewModelProvider(this)[FoodViewModel::class.java]
 
-        food.add(Food("Nasi Lemak", 20, "breakfast"))
-        food.add(Food("lunch", 20, "lunch"))
-        food.add(Food("dinner", 20, "dinner"))
+//        food.add(Food("Nasi Lemak", 20, "breakfast"))
+//        food.add(Food("lunch", 20, "lunch"))
+//        food.add(Food("dinner", 20, "dinner"))
 
         binding.breakfastRecyclerView.apply {
-            breakFastAdapter = FoodAdapter(food, "breakfast")
+            breakFastAdapter = FoodAdapter(food, "breakfast", ::removeFood)
             layoutManager = LinearLayoutManager(requireContext())
             adapter = breakFastAdapter
         }
 
         binding.lunchRecyclerView.apply {
-            lunchAdapter = FoodAdapter(food, "lunch")
+            lunchAdapter = FoodAdapter(food, "lunch", ::removeFood)
             layoutManager = LinearLayoutManager(requireContext())
             adapter = lunchAdapter
         }
 
         binding.dinnerRecyclerView.apply {
-            dinnerAdapter = FoodAdapter(food, "dinner")
+            dinnerAdapter = FoodAdapter(food, "dinner", ::removeFood)
             layoutManager = LinearLayoutManager(requireContext())
             adapter = dinnerAdapter
         }
@@ -75,6 +75,18 @@ class FoodTrackerFragment : Fragment(), View.OnClickListener {
         binding.addBreakfast.setOnClickListener(this)
         binding.addLunch.setOnClickListener(this)
         binding.addDinner.setOnClickListener(this)
+    }
+
+    private fun removeFood(id: String) {
+        viewModel.removeFood(id)
+        food.map {
+            if (it.id == id) {
+                food.remove(it)
+            }
+        }
+        breakFastAdapter.notifyDataSetChanged()
+        lunchAdapter.notifyDataSetChanged()
+        dinnerAdapter.notifyDataSetChanged()
     }
 
     private fun updateCaloriesCount() {
@@ -107,6 +119,7 @@ class FoodTrackerFragment : Fragment(), View.OnClickListener {
             if (addFoodDialog.inputFoodName.editText!!.text.isNotEmpty() && addFoodDialog.inputCalories.editText!!.text.isNotEmpty()) {
                 food.add(
                     Food(
+                        "",
                         addFoodDialog.inputFoodName.editText?.text.toString(),
                         addFoodDialog.inputCalories.editText?.text.toString().toLong(),
                         type

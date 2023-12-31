@@ -9,6 +9,7 @@
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:gravity="center_vertical"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -37,5 +38,14 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="TextView" />
+
+        <TextView
+            android:id="@+id/foodDelete"
+            android:layout_width="10dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableEnd="@android:drawable/ic_menu_delete"
+            android:textAlignment="textEnd" />
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

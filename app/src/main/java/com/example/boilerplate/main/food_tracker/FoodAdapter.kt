@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.boilerplate.databinding.RowFoodBinding
 import com.example.boilerplate.main.food_tracker.model.Food
 
-class FoodAdapter(private val food: MutableList<Food>, val type: String) :
+class FoodAdapter(private val food: MutableList<Food>, val type: String, val removeFood: (String) -> Unit) :
     RecyclerView.Adapter<FoodAdapter.ViewHolder>() {
 
     class ViewHolder(val binding: RowFoodBinding) : RecyclerView.ViewHolder(binding.root)
@@ -35,6 +35,9 @@ class FoodAdapter(private val food: MutableList<Food>, val type: String) :
             }
             holder.binding.foodName.text = item.name
             holder.binding.foodCalories.text = item.calories.toString()
+            holder.binding.foodDelete.setOnClickListener {
+                removeFood.invoke(item.id)
+            }
         }
     }
 
