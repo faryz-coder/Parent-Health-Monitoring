@@ -8,10 +8,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.boilerplate.R
 import com.example.boilerplate.databinding.FragmentBmiBinding
+import com.example.boilerplate.utils.UtilsInterface
 import com.google.android.material.slider.Slider
 import kotlin.math.sqrt
 
-class BmiCalculatorFragment : Fragment(), View.OnClickListener {
+class BmiCalculatorFragment : Fragment(), View.OnClickListener, UtilsInterface {
     private var _binding: FragmentBmiBinding? = null
 
     private val binding get() = _binding!!
@@ -50,6 +51,7 @@ class BmiCalculatorFragment : Fragment(), View.OnClickListener {
         binding.bmiAgeMinus.setOnClickListener(this)
         binding.btnCalculateBmi.setOnClickListener(this)
         binding.btnResetBmi.setOnClickListener(this)
+        binding.bmiCalculatorLayout.setOnClickListener(this)
     }
 
     override fun onClick(btn: View) {
@@ -60,11 +62,15 @@ class BmiCalculatorFragment : Fragment(), View.OnClickListener {
             binding.bmiAgeAdd.id -> setAge(true)
             binding.btnResetBmi.id -> reset()
             binding.btnCalculateBmi.id -> calculateBmi()
+            binding.bmiCalculatorLayout.id -> hideKeyboard(requireActivity(), requireView().findFocus())
         }
     }
 
     private fun calculateBmi() {
-        val bmi = (height/100) / (sqrt(weight))
+        weight = binding.bmiWeight.editText!!.text.toString().toFloat()
+        val heightInMeters = height/100
+        val squareOfHeight = heightInMeters * heightInMeters
+        val bmi =  weight / squareOfHeight
 
         if (bmi < 16.0F) {
             binding.bmiStatus.text = getString(R.string.you_are_severely_underweight)
@@ -84,20 +90,20 @@ class BmiCalculatorFragment : Fragment(), View.OnClickListener {
     private fun setAge(input: Boolean) {
         if (input) {
             age += 1F
-            binding.bmiAge.text = getString(R.string.input_years, age.toString())
+            binding.bmiAge.editText!!.setText(age.toString())
         } else {
             age -= 1F
-            binding.bmiAge.text = getString(R.string.input_years, age.toString())
+            binding.bmiAge.editText!!.setText(age.toString())
         }
     }
 
     private fun setWeight(input: Boolean) {
         if (input) {
             weight += 1F
-            binding.bmiWeight.text = getString(R.string.input_kg, weight.toString())
+            binding.bmiWeight.editText!!.setText(weight.toString())
         } else {
             weight -= 1F
-            binding.bmiWeight.text = getString(R.string.input_kg, weight.toString())
+            binding.bmiWeight.editText!!.setText(weight.toString())
         }
     }
 
@@ -106,8 +112,8 @@ class BmiCalculatorFragment : Fragment(), View.OnClickListener {
         weight = 0F
         height = 0F
 
-        binding.bmiWeight.text = getString(R.string.input_kg, "0")
-        binding.bmiAge.text = getString(R.string.input_years, "0")
+        binding.bmiWeight.editText!!.setText("0")
+        binding.bmiAge.editText!!.setText("0")
         binding.heightBar.value = 0F
     }
 }

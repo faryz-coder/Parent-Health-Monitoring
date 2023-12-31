@@ -126,10 +126,13 @@ class FirestoreManager {
             }
     }
 
-    fun removeFood(id: String) {
+    fun removeFood(id: String, onSuccess: () -> Unit) {
         db.collection("user").document(AuthManager().userEmail())
             .collection("food").document(id)
             .delete()
+            .addOnSuccessListener {
+                onSuccess.invoke()
+            }
     }
 
     fun addFood(food: Food) {

@@ -20,7 +20,11 @@ class FoodViewModel : ViewModel() {
     }
 
     fun removeFood(id: String) {
-        FirestoreManager().removeFood(id)
+        FirestoreManager().removeFood(id, ::refreshFood)
+    }
+
+    private fun refreshFood() {
+        FirestoreManager().getListFood(::setListFood)
     }
 
 }

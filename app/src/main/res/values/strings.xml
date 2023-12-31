@@ -61,5 +61,7 @@
     <string name="input_time">Time: %1$s!</string>
     <string name="input_repeat">Repeat: %1$s!</string>
     <string name="input_reminder">Reminder: %1$s!</string>
+    <string name="kg">Kg</string>
+    <string name="year">Year</string>
 
 </resources>
