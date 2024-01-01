@@ -107,11 +107,13 @@ class FirestoreManager {
     fun getListFood(onSuccess: (MutableList<Food>) -> Unit) {
         val docRef = db.collection("user").document(AuthManager().userEmail())
             .collection("food")
+        val food = mutableListOf<Food>()
 
         docRef.get()
             .addOnSuccessListener { document ->
-                val food = mutableListOf<Food>()
-
+                if (document.size() == 0) {
+                    onSuccess.invoke(food)
+                }
                 document.map {
                     food.add(
                         Food(
@@ -135,7 +137,7 @@ class FirestoreManager {
             }
     }
 
-    fun addFood(food: Food) {
+    fun addFood(food: Food, onSuccess: () -> Unit) {
         val data = hashMapOf(
             "name" to food.name,
             "calories" to food.calories,
@@ -144,5 +146,8 @@ class FirestoreManager {
         val docRef = db.collection("user").document(AuthManager().userEmail())
             .collection("food")
             .add(data)
+            .addOnSuccessListener {
+                onSuccess.invoke()
+            }
     }
 }

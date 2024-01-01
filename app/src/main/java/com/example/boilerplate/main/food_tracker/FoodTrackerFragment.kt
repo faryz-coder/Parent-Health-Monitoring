@@ -114,15 +114,14 @@ class FoodTrackerFragment : Fragment(), View.OnClickListener {
 
         addFoodDialog.btnAddFood.setOnClickListener {
             if (addFoodDialog.inputFoodName.editText!!.text.isNotEmpty() && addFoodDialog.inputCalories.editText!!.text.isNotEmpty()) {
-                food.add(
+                FirestoreManager().addFood(
                     Food(
                         "",
                         addFoodDialog.inputFoodName.editText?.text.toString(),
                         addFoodDialog.inputCalories.editText?.text.toString().toLong(),
                         type
                     )
-                )
-                FirestoreManager().addFood(food.last())
+                ) { viewModel.refreshFood() }
 
                 when (type) {
                     "breakfast" -> {

@@ -16,6 +16,7 @@ class FoodViewModel : ViewModel() {
     val food = _food
 
     private fun setListFood(food: MutableList<Food>) {
+        _food.value?.clear()
         _food.value = food
     }
 
@@ -23,7 +24,7 @@ class FoodViewModel : ViewModel() {
         FirestoreManager().removeFood(id, ::refreshFood)
     }
 
-    private fun refreshFood() {
+    fun refreshFood() {
         FirestoreManager().getListFood(::setListFood)
     }
 
