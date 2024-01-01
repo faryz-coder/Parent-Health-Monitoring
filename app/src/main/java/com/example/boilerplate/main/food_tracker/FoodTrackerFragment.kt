@@ -78,12 +78,20 @@ class FoodTrackerFragment : Fragment(), View.OnClickListener {
     }
 
     private fun removeFood(id: String) {
-
+        var temp = Food("","", 0L, "")
+        food.map {
+            if(it.id == id) {
+                temp = it
+            }
+        }.let {
+            food.remove(temp)
+        }
         viewModel.removeFood(id)
 
         breakFastAdapter.notifyDataSetChanged()
         lunchAdapter.notifyDataSetChanged()
         dinnerAdapter.notifyDataSetChanged()
+        updateCaloriesCount()
     }
 
     private fun updateCaloriesCount() {

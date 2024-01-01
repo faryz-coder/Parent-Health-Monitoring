@@ -16,8 +16,9 @@ class FoodViewModel : ViewModel() {
     val food = _food
 
     private fun setListFood(food: MutableList<Food>) {
-        _food.value?.clear()
-        _food.value = food
+        if (food.size > 0) {
+            _food.value = food
+        }
     }
 
     fun removeFood(id: String) {

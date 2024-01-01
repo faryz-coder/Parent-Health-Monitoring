@@ -111,9 +111,6 @@ class FirestoreManager {
 
         docRef.get()
             .addOnSuccessListener { document ->
-                if (document.size() == 0) {
-                    onSuccess.invoke(food)
-                }
                 document.map {
                     food.add(
                         Food(
